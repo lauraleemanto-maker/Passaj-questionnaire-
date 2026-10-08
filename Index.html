@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Questionnaire de satisfaction — PASSAJ</title>
+<style>
+:root { color-scheme: light dark; --bg: light-dark(#f7f3ec,#171614); --surface: light-dark(#fff,#24221f); --text: light-dark(#211e1a,#f7f2e9); --muted: light-dark(#6d655b,#b9b1a7); --accent: light-dark(#a44a28,#e9825c); --accent2: light-dark(#d8a45c,#e3b06b); --border: light-dark(#e3ddd4,#3b3732); }
+* { box-sizing:border-box; }
+body { margin:0; font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; background:var(--bg); color:var(--text); }
+.root { min-height:100vh; background:var(--bg); }
+.hero { padding:38px 20px 28px; background:linear-gradient(135deg,#7f321d,#b85a31); color:#fff; }
+.hero-inner, main { max-width:760px; margin:auto; }
+.brand { letter-spacing:.16em; font-weight:800; font-size:.82rem; }
+h1 { font-family:Georgia,serif; font-size:clamp(2rem,7vw,3.5rem); margin:12px 0 10px; line-height:1; }
+.hero p { margin:0; max-width:650px; opacity:.9; line-height:1.55; }
+.progress { margin-top:20px; height:7px; background:#ffffff35; border-radius:99px; overflow:hidden; }
+.progress i { display:block; width:0%; height:100%; background:#f3ca7a; transition:.2s; }
+main { padding:24px 16px 60px; }
+section { margin:0 0 30px; }
+h2 { display:flex; align-items:center; gap:10px; font-size:1.25rem; margin:28px 0 14px; }
+h2 span { display:grid; place-items:center; width:30px; height:30px; border-radius:50%; background:var(--accent); color:#fff; font-size:.85rem; }
+.card { background:var(--surface); border:1px solid var(--border); border-radius:18px; padding:18px; margin:12px 0; box-shadow:0 5px 20px #00000009; }
+legend { padding:0 4px; font-weight:700; line-height:1.4; }
+.options { display:grid; gap:9px; margin-top:13px; }
+.option { display:flex; align-items:flex-start; gap:10px; padding:11px 12px; border:1px solid var(--border); border-radius:12px; cursor:pointer; }
+.option:has(input:checked) { border-color:var(--accent); background:light-dark(#fff7f2,#30251f); }
+.option input { margin-top:3px; accent-color:var(--accent); }
+input[type=text],textarea { width:100%; margin-top:12px; padding:13px 14px; border:1px solid var(--border); border-radius:12px; background:transparent; color:var(--text); font:inherit; }
+.rating { display:grid; grid-template-columns:repeat(11,1fr); gap:5px; margin-top:14px; }
+.rating label input { position:absolute; opacity:0; }
+.rating span { display:grid; place-items:center; aspect-ratio:1; border:1px solid var(--border); border-radius:10px; cursor:pointer; font-weight:700; }
+.rating label input:checked + span { background:var(--accent); color:#fff; border-color:var(--accent); }
+.hint { color:var(--muted); font-size:.82rem; }
+.subq { padding:12px 0; border-top:1px solid var(--border); }
+.subq:first-child { border-top:0; }
+.compact { display:flex; flex-wrap:wrap; gap:7px; margin-top:8px; }
+.compact .option { padding:8px 10px; }
+.matrix-row { border-top:1px solid var(--border); padding:14px 0; }
+.matrix-row:first-child { border-top:0; padding-top:0; }
+button { width:100%; border:0; border-radius:15px; padding:16px; background:var(--accent); color:#fff; font:700 1rem inherit; cursor:pointer; box-shadow:0 8px 20px #0002; }
+button:hover { filter:brightness(1.05); }
+.thanks { display:none; text-align:center; padding:40px 20px; }
+.thanks strong { display:block; font:700 2rem Georgia,serif; margin-bottom:10px; }
+footer { color:var(--muted); text-align:center; font-size:.8rem; margin-top:22px; }
+@media (max-width:600px) { .rating { gap:3px; } .rating span { border-radius:8px; font-size:.82rem; } }
+</style>
+</head>
+<body>
+<div class="root">
+<header class="hero"><div class="hero-inner">
+<div class="brand">PASSAJ · ARTISAN TRAITEUR LIBANAIS</div>
+<h1>Votre avis compte.</h1>
+<p>Ce questionnaire est anonyme et ne prend que quelques minutes. Merci de nous aider à améliorer notre point de vente, nos produits et nos services.</p>
+<div class="progress"><i id="bar"></i></div>
+</div></header>
+<main>
+<form id="survey">
+<section><h2><span>1</span>Profil du client</h2><fieldset class="card"><legend>1. Quel est votre sexe ?</legend>
+<div class="options">
+<label class="option"><input required type="radio" name="1" value="Femme"><span>Femme</span></label>
+<label class="option"><input required type="radio" name="1" value="Homme"><span>Homme</span></label>
+<label class="option"><input required type="radio" name="1" value="Préfère ne pas répondre"><span>Préfère ne pas répondre</span></label>
+</div>
+</fieldset><fieldset class="card"><legend>2. Dans quelle tranche d’âge vous situez-vous ?</legend>
+<div class="options">
+<label class="option"><input required type="radio" name="2" value="Moins de 18 ans"><span>Moins de 18 ans</span></label>
+<label class="option"><input required type="radio" name="2" value="18 à 24 ans"><span>18 à 24 ans</span></label>
+<label class="option"><input required type="radio" name="2" value="25 à 34 ans"><span>25 à 34 ans</span></label>
+<label class="option"><input required type="radio" name="2" value="35 à 49 ans"><span>35 à 49 ans</span></label>
+<label class="option"><input required type="radio" name="2" value="50 à 64 ans"><span>50 à 64 ans</span></label>
+<label class="option"><input required type="radio" name="2" value="65 ans et plus"><span>65 ans et plus</span></label>
+</div>
+</fieldset><fieldset class="card"><legend>3. Quel est votre code postal ?</legend>
+<input name="3" type="text" inputmode="numeric" placeholder="Votre réponse">
+</fieldset></section><section><h2><span>2</span>Fréquentation de PASSAJ</h2><fieldset class="card"><legend>4. À quelle fréquence venez-vous chez PASSAJ ?</legend>
+<div class="options">
+<label class="option"><input required type="radio" name="4" value="Tous les jours"><span>Tous les jours</span></label>
+<label class="option"><input required type="radio" name="4" value="Plusieurs fois par semaine"><span>Plusieurs fois par semaine</span></label>
+<label class="option"><input required type="radio" name="4" value="Une fois par semaine"><span>Une fois par semaine</span></label>
+<label class="option"><input required type="radio" name="4" value="Quelques fois par mois"><span>Quelques fois par mois</span></label>
+<label class="option"><input required type="radio" name="4" value="Rarement"><span>Rarement</span></label>
+<label class="option"><input required type="radio" name="4" value="C’est ma première visite"><span>C’est ma première visite</span></label>
+</div>
+</fieldset><fieldset class="card"><legend>5. Quels produits ou services utilisez-vous chez PASSAJ ?</legend>
+<div class="options">
+<label class="option"><input type="checkbox" name="5" value="Mezzés"><span>Mezzés</span></label>
+<label class="option"><input type="checkbox" name="5" value="Plats principaux et grillades"><span>Plats principaux et grillades</span></label>
+<label class="option"><input type="checkbox" name="5" value="Pâtisseries libanaises"><span>Pâtisseries libanaises</span></label>
+<label class="option"><input type="checkbox" name="5" value="Boissons (thé, café, jus, vins libanais…)"><span>Boissons (thé, café, jus, vins libanais…)</span></label>
+<label class="option"><input type="checkbox" name="5" value="Épicerie libanaise (produits à emporter)"><span>Épicerie libanaise (produits à emporter)</span></label>
+<label class="option"><input type="checkbox" name="5" value="Service traiteur pour événements"><span>Service traiteur pour événements</span></label>
+<label class="option"><input type="checkbox" name="5" value="Foodtruck"><span>Foodtruck</span></label>
+<label class="option"><input type="checkbox" name="5" value="Paniers anti-gaspi (Too Good To Go)"><span>Paniers anti-gaspi (Too Good To Go)</span></label>
+</div>
+</fieldset></section><section><h2><span>3</span>Satisfaction concernant le point de vente</h2><fieldset class="card"><legend>6. Les produits que vous recherchez sont-ils généralement disponibles ?</legend>
+<div class="options">
+<label class="option"><input required type="radio" name="6" value="Toujours"><span>Toujours</span></label>
+<label class="option"><input required type="radio" name="6" value="Souvent"><span>Souvent</span></label>
+<label class="option"><input required type="radio" name="6" value="Parfois"><span>Parfois</span></label>
+<label class="option"><input required type="radio" name="6" value="Rarement"><span>Rarement</span></label>
+<label class="option"><input required type="radio" name="6" value="Jamais"><span>Jamais</span></label>
+</div>
+</fieldset><fieldset class="card"><legend>7. Les prix des produits sont-ils clairement affichés et faciles à identifier ?</legend>
+<div class="options">
+<label class="option"><input required type="radio" name="7" value="Oui, tous les prix sont clairement affichés"><span>Oui, tous les prix sont clairement affichés</span></label>
+<label class="option"><input required type="radio" name="7" value="Oui, la plupart des prix sont visibles"><span>Oui, la plupart des prix sont visibles</span></label>
+<label class="option"><input required type="radio" name="7" value="Certains prix ne sont pas affichés"><span>Certains prix ne sont pas affichés</span></label>
+<label class="option"><input required type="radio" name="7" value="Non, les prix sont difficiles à trouver"><span>Non, les prix sont difficiles à trouver</span></label>
+</div>
+</fieldset><fieldset class="card"><legend>8. Comment évaluez-vous le temps d’attente avant d’être servi(e) ?</legend>
+<div class="options">
+<label class="option"><input required type="radio" name="8" value="Moins de 2 minutes"><span>Moins de 2 minutes</span></label>
+<label class="option"><input required type="radio" name="8" value="Entre 2 et 5 minutes"><span>Entre 2 et 5 minutes</span></label>
+<label class="option"><input required type="radio" name="8" value="Entre 5 et 10 minutes"><span>Entre 5 et 10 minutes</span></label>
+<label class="option"><input required type="radio" name="8" value="Plus de 10 minutes"><span>Plus de 10 minutes</span></label>
+</div>
+</fieldset><fieldset class="card"><legend>9. Lorsque vous demandez un renseignement, la réponse apportée est-elle claire et adaptée à votre demande ?</legend>
+<div class="options">
+<label class="option"><input required type="radio" name="9" value="Toujours"><span>Toujours</span></label>
+<label class="option"><input required type="radio" name="9" value="Souvent"><span>Souvent</span></label>
+<label class="option"><input required type="radio" name="9" value="Parfois"><span>Parfois</span></label>
+<label class="option"><input required type="radio" name="9" value="Rarement"><span>Rarement</span></label>
+<label class="option"><input required type="radio" name="9" value="Je ne demande jamais de renseignement"><span>Je ne demande jamais de renseignement</span></label>
+</div>
+</fieldset>
+<fieldset class="card"><legend>10. Les espaces suivants vous semblent-ils propres ?</legend>
+<div class="subq"><strong>Le comptoir de vente</strong><div class="options compact">
+<label class="option"><input required type="radio" name="q10_comptoir" value="Oui"><span>Oui</span></label>
+<label class="option"><input type="radio" name="q10_comptoir" value="Non"><span>Non</span></label>
+<label class="option"><input type="radio" name="q10_comptoir" value="Non concerné(e)"><span>Non concerné(e)</span></label></div></div>
+<div class="subq"><strong>L’espace de dégustation / les tables</strong><div class="options compact">
+<label class="option"><input required type="radio" name="q10_tables" value="Oui"><span>Oui</span></label>
+<label class="option"><input type="radio" name="q10_tables" value="Non"><span>Non</span></label>
+<label class="option"><input type="radio" name="q10_tables" value="Non concerné(e)"><span>Non concerné(e)</span></label></div></div>
+<div class="subq"><strong>Les toilettes</strong><div class="options compact">
+<label class="option"><input required type="radio" name="q10_toilettes" value="Oui"><span>Oui</span></label>
+<label class="option"><input type="radio" name="q10_toilettes" value="Non"><span>Non</span></label>
+<label class="option"><input type="radio" name="q10_toilettes" value="Non concerné(e)"><span>Non concerné(e)</span></label></div></div>
+</fieldset></section><section><h2><span>4</span>Satisfaction concernant les produits</h2>
+<fieldset class="card"><legend>11. Concernant les mezzés et plats principaux, êtes-vous satisfait(e) des éléments suivants ?</legend>
+<div class="matrix">
+<div class="matrix-row"><strong>Fraîcheur des produits</strong><div class="options compact"><label class="option"><input required type="radio" name="q11_0" value="Très satisfait(e)"><span>Très satisfait(e)</span></label><label class="option"><input required type="radio" name="q11_0" value="Satisfait(e)"><span>Satisfait(e)</span></label><label class="option"><input required type="radio" name="q11_0" value="Peu satisfait(e)"><span>Peu satisfait(e)</span></label><label class="option"><input required type="radio" name="q11_0" value="Pas satisfait(e)"><span>Pas satisfait(e)</span></label><label class="option"><input required type="radio" name="q11_0" value="Non concerné(e)"><span>Non concerné(e)</span></label></div></div><div class="matrix-row"><strong>Variété de la carte</strong><div class="options compact"><label class="option"><input required type="radio" name="q11_1" value="Très satisfait(e)"><span>Très satisfait(e)</span></label><label class="option"><input required type="radio" name="q11_1" value="Satisfait(e)"><span>Satisfait(e)</span></label><label class="option"><input required type="radio" name="q11_1" value="Peu satisfait(e)"><span>Peu satisfait(e)</span></label><label class="option"><input required type="radio" name="q11_1" value="Pas satisfait(e)"><span>Pas satisfait(e)</span></label><label class="option"><input required type="radio" name="q11_1" value="Non concerné(e)"><span>Non concerné(e)</span></label></div></div><div class="matrix-row"><strong>Présentation des plats</strong><div class="options compact"><label class="option"><input required type="radio" name="q11_2" value="Très satisfait(e)"><span>Très satisfait(e)</span></label><label class="option"><input required type="radio" name="q11_2" value="Satisfait(e)"><span>Satisfait(e)</span></label><label class="option"><input required type="radio" name="q11_2" value="Peu satisfait(e)"><span>Peu satisfait(e)</span></label><label class="option"><input required type="radio" name="q11_2" value="Pas satisfait(e)"><span>Pas satisfait(e)</span></label><label class="option"><input required type="radio" name="q11_2" value="Non concerné(e)"><span>Non concerné(e)</span></label></div></div><div class="matrix-row"><strong>Rapport qualité-prix</strong><div class="options compact"><label class="option"><input required type="radio" name="q11_3" value="Très satisfait(e)"><span>Très satisfait(e)</span></label><label class="option"><input required type="radio" name="q11_3" value="Satisfait(e)"><span>Satisfait(e)</span></label><label class="option"><input required type="radio" name="q11_3" value="Peu satisfait(e)"><span>Peu satisfait(e)</span></label><label class="option"><input required type="radio" name="q11_3" value="Pas satisfait(e)"><span>Pas satisfait(e)</span></label><label class="option"><input required type="radio" name="q11_3" value="Non concerné(e)"><span>Non concerné(e)</span></label></div></div>
+</div></fieldset>
+<fieldset class="card"><legend>12. Concernant les boissons (thé, café, jus, vins libanais…), comment évaluez-vous le choix proposé ?</legend>
+<div class="options">
+<label class="option"><input required type="radio" name="12" value="Très varié"><span>Très varié</span></label>
+<label class="option"><input required type="radio" name="12" value="Assez varié"><span>Assez varié</span></label>
+<label class="option"><input required type="radio" name="12" value="Peu varié"><span>Peu varié</span></label>
+<label class="option"><input required type="radio" name="12" value="Pas du tout varié"><span>Pas du tout varié</span></label>
+<label class="option"><input required type="radio" name="12" value="Je ne consomme pas de boissons chez PASSAJ"><span>Je ne consomme pas de boissons chez PASSAJ</span></label>
+</div>
+</fieldset>
+<fieldset class="card"><legend>13. Concernant le service traiteur (commandes et événements), comment évaluez-vous les éléments suivants ?</legend>
+<div class="matrix">
+<div class="matrix-row"><strong>Qualité de l’accueil</strong><div class="options compact"><label class="option"><input required type="radio" name="q13_0" value="Très satisfait(e)"><span>Très satisfait(e)</span></label><label class="option"><input required type="radio" name="q13_0" value="Satisfait(e)"><span>Satisfait(e)</span></label><label class="option"><input required type="radio" name="q13_0" value="Peu satisfait(e)"><span>Peu satisfait(e)</span></label><label class="option"><input required type="radio" name="q13_0" value="Pas satisfait(e)"><span>Pas satisfait(e)</span></label><label class="option"><input required type="radio" name="q13_0" value="Non concerné(e)"><span>Non concerné(e)</span></label></div></div><div class="matrix-row"><strong>Respect des délais</strong><div class="options compact"><label class="option"><input required type="radio" name="q13_1" value="Très satisfait(e)"><span>Très satisfait(e)</span></label><label class="option"><input required type="radio" name="q13_1" value="Satisfait(e)"><span>Satisfait(e)</span></label><label class="option"><input required type="radio" name="q13_1" value="Peu satisfait(e)"><span>Peu satisfait(e)</span></label><label class="option"><input required type="radio" name="q13_1" value="Pas satisfait(e)"><span>Pas satisfait(e)</span></label><label class="option"><input required type="radio" name="q13_1" value="Non concerné(e)"><span>Non concerné(e)</span></label></div></div><div class="matrix-row"><strong>Conseil et accompagnement</strong><div class="options compact"><label class="option"><input required type="radio" name="q13_2" value="Très satisfait(e)"><span>Très satisfait(e)</span></label><label class="option"><input required type="radio" name="q13_2" value="Satisfait(e)"><span>Satisfait(e)</span></label><label class="option"><input required type="radio" name="q13_2" value="Peu satisfait(e)"><span>Peu satisfait(e)</span></label><label class="option"><input required type="radio" name="q13_2" value="Pas satisfait(e)"><span>Pas satisfait(e)</span></label><label class="option"><input required type="radio" name="q13_2" value="Non concerné(e)"><span>Non concerné(e)</span></label></div></div><div class="matrix-row"><strong>Rapport qualité-prix</strong><div class="options compact"><label class="option"><input required type="radio" name="q13_3" value="Très satisfait(e)"><span>Très satisfait(e)</span></label><label class="option"><input required type="radio" name="q13_3" value="Satisfait(e)"><span>Satisfait(e)</span></label><label class="option"><input required type="radio" name="q13_3" value="Peu satisfait(e)"><span>Peu satisfait(e)</span></label><label class="option"><input required type="radio" name="q13_3" value="Pas satisfait(e)"><span>Pas satisfait(e)</span></label><label class="option"><input required type="radio" name="q13_3" value="Non concerné(e)"><span>Non concerné(e)</span></label></div></div>
+</div></fieldset>
+</section><section><h2><span>5</span>Satisfaction générale</h2><fieldset class="card"><legend>14. Sur une échelle de 0 à 10, quelle note donneriez-vous à votre expérience globale chez PASSAJ ?</legend>
+<div class="rating">
+<label><input required type="radio" name="14" value="0"><span>0</span></label>
+<label><input required type="radio" name="14" value="1"><span>1</span></label>
+<label><input required type="radio" name="14" value="2"><span>2</span></label>
+<label><input required type="radio" name="14" value="3"><span>3</span></label>
+<label><input required type="radio" name="14" value="4"><span>4</span></label>
+<label><input required type="radio" name="14" value="5"><span>5</span></label>
+<label><input required type="radio" name="14" value="6"><span>6</span></label>
+<label><input required type="radio" name="14" value="7"><span>7</span></label>
+<label><input required type="radio" name="14" value="8"><span>8</span></label>
+<label><input required type="radio" name="14" value="9"><span>9</span></label>
+<label><input required type="radio" name="14" value="10"><span>10</span></label>
+</div><p class="hint">0 = Pas du tout satisfait(e) · 10 = Tout à fait satisfait(e)</p>
+</fieldset><fieldset class="card"><legend>15. Quel point précis devrions-nous améliorer en priorité ?</legend>
+<div class="options">
+<label class="option"><input required type="radio" name="15" value="La disponibilité des produits"><span>La disponibilité des produits</span></label>
+<label class="option"><input required type="radio" name="15" value="La rapidité du service"><span>La rapidité du service</span></label>
+<label class="option"><input required type="radio" name="15" value="Le choix des produits"><span>Le choix des produits</span></label>
+<label class="option"><input required type="radio" name="15" value="Les prix"><span>Les prix</span></label>
+<label class="option"><input required type="radio" name="15" value="La propreté"><span>La propreté</span></label>
+<label class="option"><input required type="radio" name="15" value="Le service traiteur"><span>Le service traiteur</span></label>
+<label class="option"><input required type="radio" name="15" value="Les conseils donnés"><span>Les conseils donnés</span></label>
+<label class="option"><input required type="radio" name="15" value="Autre"><span>Autre</span></label>
+</div>
+</fieldset><fieldset class="card"><legend>16. Avez-vous une suggestion précise concernant un produit ou un service que vous souhaiteriez trouver chez PASSAJ ?</legend>
+<textarea name="16" rows="4" placeholder="Votre suggestion"></textarea>
+</fieldset></section>
+<button type="submit">Envoyer mon questionnaire</button>
+</form>
+<div class="thanks" id="thanks"><strong>Merci pour votre participation.</strong><span>Votre avis a bien été pris en compte.</span></div>
+<footer>PASSAJ — Questionnaire de satisfaction client</footer>
+</main>
+</div>
+<script>
+const form=document.getElementById('survey'), bar=document.getElementById('bar');
+function update(){
+  const required=[...form.querySelectorAll('[required]')];
+  const done=required.filter(x=>x.type==='radio'||x.type==='checkbox'?x.checked:x.value.trim()).length;
+  bar.style.width=Math.min(100,Math.round(done/required.length*100))+'%';
+}
+form.addEventListener('input',update);
+form.addEventListener('change',update);
+form.addEventListener('submit',e=>{
+ e.preventDefault();
+ const data={};
+ new FormData(form).forEach((v,k)=>{ if(data[k]) data[k]=Array.isArray(data[k])?[...data[k],v]:[data[k],v]; else data[k]=v; });
+ localStorage.setItem('passaj_questionnaire_demo',JSON.stringify(data));
+ form.style.display='none'; document.getElementById('thanks').style.display='block';
+ window.scrollTo({top:0,behavior:'smooth'});
+});
+update();
+</script>
+</body></html>
